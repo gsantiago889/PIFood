@@ -26,8 +26,6 @@ export default function Home() {
   const allRecipes = useSelector((state) => state.recipes);
   const Pages = useSelector((state) => state.pages);
 
-  console.log(Pages);
-
   const [order, setOrder] = useState("");
 
   const [page, setPage] = useState(Pages);
@@ -77,7 +75,7 @@ export default function Home() {
     setOrder(`${e.target.value}`);
   }
   function handleNextpage() {
-    dispatch(savePage(Pages));
+    dispatch(savePage(page));
   }
   return (
     <div className="home">
@@ -106,6 +104,7 @@ export default function Home() {
           <option value="atoz">A to Z</option>
           <option value="ztoa">Z to A</option>
         </select>
+
         <select
           className="select"
           name="numerical"
@@ -117,6 +116,7 @@ export default function Home() {
           <option value="asc">From Min to Max</option>
           <option value="desc">From Max to Min</option>
         </select>
+
         <label className="filters">Diet Types:</label>
         <select
           className="select"
@@ -153,8 +153,8 @@ export default function Home() {
           return (
             <div className="eachRecipe" key={prevId++}>
               <Link
-                className="linkRecetas"
                 onClick={(e) => handleNextpage(e)}
+                className="linkRecetas"
                 to={`home/${e.id}`}
               >
                 <Recipe
