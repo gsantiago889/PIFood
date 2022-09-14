@@ -1,3 +1,4 @@
+import { useLayoutEffect } from "react";
 import {
   GET_RECIPES,
   ADD_RECIPE,
@@ -113,6 +114,7 @@ export default function rootReducer(state = initialState, action) {
       };
 
     case CLEAR_DETAIL: //Limpiar estado
+      console.log(action.payload);
       return {
         ...state,
         allRecipes: action.payload,

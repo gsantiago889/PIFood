@@ -44,9 +44,6 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getRecipes());
-    return () => {
-      dispatch(clearDetail());
-    };
   }, [dispatch]);
 
   function handleClick(e) {
@@ -76,7 +73,11 @@ export default function Home() {
   }
   function handleNextpage() {
     dispatch(savePage(page));
+    dispatch(clearDetail());
+    console.log();
   }
+  const imagen = setTimeout((asadoArgentino) => {}, 2000);
+
   return (
     <div className="home">
       <h1 className="initialMsg">Find your recipe!, GO!!</h1>
@@ -158,7 +159,7 @@ export default function Home() {
                 to={`home/${e.id}`}
               >
                 <Recipe
-                  image={e.image ? e.image : asadoArgentino}
+                  image={e.image ? e.image : imagen}
                   name={e.name}
                   dietTypes={e.dietTypes}
                 />

@@ -9,13 +9,16 @@ import "./recipedetails.css";
 export default function RecipeDetails(props) {
   const dispatch = useDispatch();
   const id = props.match.params.id;
-
+  console.log(id);
   useEffect(() => {
     dispatch(getRecipeDetails(id));
-    return () => {
-      dispatch(clearDetail());
-    };
   }, [dispatch, id]);
+
+  // function handleClick(e) {
+  //   e.preventDefault();
+  //   dispatch(clearDetail());
+  // }
+  const imagen = setTimeout((asadoArgentino) => {}, 2000);
 
   const recipeDetails = useSelector((state) => state.recipeDetails);
 
@@ -24,7 +27,7 @@ export default function RecipeDetails(props) {
       <div className="divimg">
         <img
           className="detailImg"
-          src={recipeDetails.image ? recipeDetails.image : asadoArgentino}
+          src={recipeDetails.image ? recipeDetails.image : imagen}
           alt="Pic not found"
         />
       </div>

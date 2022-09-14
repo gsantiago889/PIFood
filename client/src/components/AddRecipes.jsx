@@ -10,13 +10,13 @@ function validate(input) {
   const errors = {};
   if (input.name.trim().length === 0 || !input.name)
     errors.name = "Please complete with a recipe name";
-  if (!input.summary)
+  if (!input.summary || input.summary.length >= 100)
     errors.summary = "Please add some comments about your recipe";
   if (input.score < 1 || input.score > 100)
     errors.score = "The score must be a number between 1 and 100";
   if (input.healthScore < 1 || input.healthScore > 100)
     errors.healthScore = "The score must be a number between 1 and 100";
-  if (!input.steps.length)
+  if (!input.steps.length || input.steps.length >= 100)
     errors.steps = "Please detail the steps for your recipe";
   if (!input.dietTypes.length)
     errors.dietTypes = "You must select at least one diet type";
